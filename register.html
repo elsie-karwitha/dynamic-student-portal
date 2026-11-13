@@ -20,7 +20,7 @@
   <main>
     <h1>Student Registration</h1>
 
-    <form id="register-form">
+    <form id="register-form" novalidate>
       <p>
         <label for="fullname">Full Name:</label><br>
         <input type="text" id="fullname" name="fullname" required>
@@ -63,7 +63,7 @@
         <input type="checkbox" id="terms" name="terms" required>
         <label for="terms">I agree to the terms</label>
       </p>
-
+     <p id="form-error" style="color: red;"></p>
       <button type="submit">Register</button>
     </form>
 
@@ -88,12 +88,26 @@
     <p>&copy; 2026 Dynamic Student Portal. All rights reserved.</p>
   </footer>
 <script>
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const namePattern = /^[A-Za-z\s]+$/;
+
   document.getElementById("register-form").addEventListener("submit", function (event) {
     const name = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const errorBox = document.getElementById("form-error");
 
     if (name === "") {
-      alert("Please enter your name.");
+      errorBox.textContent = "Please enter your name.";
       event.preventDefault();
+    } else if (!namePattern.test(name)) {
+      errorBox.textContent = "Name can only contain letters and spaces.";
+      event.preventDefault();
+    } else if (!emailPattern.test(email)) {
+      errorBox.textContent = "Please enter a valid email address (e.g. you@example.com).";
+      event.preventDefault();
+    } else {
+      errorBox.textContent = "";
+      alert("Form is valid. Registration submitted!");
     }
   });
 </script>

@@ -19,12 +19,23 @@ for (let i = 1; i <= 5; i++) {
   console.log(i);
 }
 
-// Lab 9: show students loaded from students.json
+// Lab 10: Student class
+class Student {
+  constructor(name, email, course) {
+    this.name = name;
+    this.email = email;
+    this.course = course;
+  }
 
-// Add one student object to the page
+  getSummary() {
+    return this.name + " (" + this.course + ") - " + this.email;
+  }
+}
+
+// Add one Student to the page
 function addStudentToPage(student) {
   const li = document.createElement("li");
-  li.textContent = student.name + " - " + student.course + " (Year " + student.year + ")";
+  li.textContent = student.getSummary();
   document.getElementById("student-list").appendChild(li);
 }
 
@@ -40,7 +51,7 @@ function displayAllStudents(students) {
     "Total registered students: " + students.length;
 }
 
-// Fetch the data, then display it
+// Fetch the data, turn each record into a Student, then display them
 function loadStudents() {
   const errorMessage = document.getElementById("error-message");
   errorMessage.textContent = "";
@@ -52,7 +63,10 @@ function loadStudents() {
       }
       return response.json();
     })
-    .then(function (students) {
+    .then(function (data) {
+      const students = data.map(function (item) {
+        return new Student(item.name, item.email, item.course);
+      });
       displayAllStudents(students);
     })
     .catch(function (error) {

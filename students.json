@@ -1,7 +1,7 @@
 [
-    { "name": "Amina Wanjiru", "course":"Data science","year":2},
-    { "name": "Brian Otieno", "course": "Computer Science", "year": 1 },
-    { "name": "Cynthia Achieng", "course": "Information Technology", "year": 3 },
-    { "name": "David Kamau", "course": "Business", "year": 2 },
-    { "name": "Esther Mutua", "course": "Data Science", "year": 1 }
+  { "name": "Amina Wanjiru", "email": "amina@gmail.com", "course": "Data Science" },
+  { "name": "Brian Otieno", "email": "brian@gmail.com", "course": "Computer Science" },
+  { "name": "Cynthia Achieng", "email": "cynthia@gmail.com", "course": "Information Technology" },
+  { "name": "David Kamau", "email": "david@gmail.com", "course": "Business" },
+  { "name": "Esther Mutua", "email": "esther@gmail.com", "course": "Data Science" }
 ]
