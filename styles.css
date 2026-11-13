@@ -1,0 +1,74 @@
+body {
+    font-family:Arial,sans-serif,Helvetica;
+    background-color:#f4f6f9;
+    color:#333;
+    margin: 20px;
+}
+
+h1,h2{
+    color:#1a4d8f;
+}
+
+nav a{
+    color:#1a4d8f;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    text-decoration:underline;
+}
+
+footer{
+    margin-top:30px;
+    color:#666;
+}
+
+/*Registration form*/
+form p{
+    margin-bottom:18px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select{
+    padding:8px;
+    width:280px;
+    border:1px solid #999;
+    border-radius: 4px;
+}
+
+fieldset{
+   padding: 12px;
+   margin-bottom: 18px;
+   border: 1px solid #999; 
+}
+
+button[type="submit"] {
+    background-color: #1a4d8f;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+   border-radius: 4px;
+   font-size: 1rem;
+   cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #123766;
+}
+
+/* Timetable */
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+}
+
+th {
+  background-color: #dde6f3;
+}
