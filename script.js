@@ -19,27 +19,47 @@ for (let i = 1; i <= 5; i++) {
   console.log(i);
 }
 
-// Lab 8: students array (placeholder data for now)
-const students = ["Amina", "Brian", "Cynthia", "David", "Esther"];
+// Lab 9: show students loaded from students.json
 
-// Add one student to the page
-function addStudentToPage(name) {
+// Add one student object to the page
+function addStudentToPage(student) {
   const li = document.createElement("li");
-  li.textContent = name;
+  li.textContent = student.name + " - " + student.course + " (Year " + student.year + ")";
   document.getElementById("student-list").appendChild(li);
 }
 
-// Loop through the array and add every student
+// Clear the list, add every student, and update the total
 function displayAllStudents(students) {
-  // Clear the list first so repeated clicks don't duplicate names
   document.getElementById("student-list").innerHTML = "";
 
   for (let i = 0; i < students.length; i++) {
     addStudentToPage(students[i]);
   }
+
+  document.getElementById("student-count").textContent =
+    "Total registered students: " + students.length;
+}
+
+// Fetch the data, then display it
+function loadStudents() {
+  const errorMessage = document.getElementById("error-message");
+  errorMessage.textContent = "";
+
+  fetch("students.json")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Could not load student data (status " + response.status + ")");
+      }
+      return response.json();
+    })
+    .then(function (students) {
+      displayAllStudents(students);
+    })
+    .catch(function (error) {
+      errorMessage.textContent = "Error: " + error.message;
+      console.error(error);
+    });
 }
 
 // Button click event
-document.getElementById("show-students-btn").addEventListener("click", function () {
-  displayAllStudents(students);
-});
+document.getElementById("show-students-btn").addEventListener("click", loadStudents);
