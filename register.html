@@ -87,6 +87,15 @@
   <footer>
     <p>&copy; 2026 Dynamic Student Portal. All rights reserved.</p>
   </footer>
+<script>
+  document.getElementById("register-form").addEventListener("submit", function (event) {
+    const name = document.getElementById("fullname").value.trim();
 
+    if (name === "") {
+      alert("Please enter your name.");
+      event.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
